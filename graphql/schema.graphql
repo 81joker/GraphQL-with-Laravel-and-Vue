@@ -26,6 +26,21 @@ type Query {
         @orderBy(column: "created_at", direction: DESC)
 }
 
+type Mutation {
+    createPost(
+        user_id: ID!
+        title: String! @rules(apply: ["required", "min:2 "])
+        body: String! @rules(apply: ["required", "min:5"])
+    ): Post @create
+    updatePost(
+        id: ID!
+        # user_id: ID!
+        title: String! @rules(apply: ["required", "min:2 "])
+        body: String! @rules(apply: ["required", "min:5"])
+    ): Post @update
+    deletePost(id: ID! @whereKey): Post! @delete
+}
+
 "Account of a person who utilizes this application."
 type User {
     "Unique primary key."
