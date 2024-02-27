@@ -23,13 +23,12 @@ type Query {
     postsResolver: [Post!]!
         @field(resolver: "App\\GraphQL\\Queries\\postsResolver")
 
-    posts: [Post!]!
-        @paginate(defaultCount: 10)
-        @orderBy(column: "created_at", direction: DESC)
+    posts: [Post!]! @paginate(defaultCount: 10) @orderBy(column: "created_at", direction: DESC)
+
     postResolver(id: ID!): Post! @field(resolver: "App\\GraphQL\\Queries\\postResolver")
 }
 
-type Mutation {
+type Mutation { 
     createPost(
         user_id: ID!
         title: String! @rules(apply: ["required", "min:2 "])
