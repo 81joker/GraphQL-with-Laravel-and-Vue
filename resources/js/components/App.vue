@@ -49,7 +49,7 @@ function handelMutition() {
     },
     body: JSON.stringify({
       query: `
-                mutation {
+      mutation {
   createPostResolver(user_id:1, title:"hallo vue", body:"hallo lorem vue") {
       id
     title
